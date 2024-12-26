@@ -1,6 +1,6 @@
 services:
-  react-app:
-    container_name: react-app
+  react-app-dev:
+    container_name: react-app-dev
     build:
       context: .
       dockerfile: Dockerfile.dev
