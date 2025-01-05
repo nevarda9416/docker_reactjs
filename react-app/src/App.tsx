@@ -9,6 +9,13 @@ import calculatorReducer from './CalculatorSlice';
 import Calculator from "./Calculator";
 import DisplayValue from "./DisplayValue";
 import {Provider} from 'react-redux';
+/**
+ * Cùng test kết quả bằng cách hiện giá trị counter cùng 2 nút tăng giảm, mỗi lần ấn vào counter tăng/giảm 5 đơn vị, ta sẽ:
+ * - Sử dụng useSelector của react-redux để lấy state counter từ store.
+ * - Sử dụng useDispatcher để trả về function dispatch, truyền increment và decrement vào dispatch để gọi 2 action này.
+ */
+import {useSelector, useDispatch} from "react-redux";
+import {increment, decrement} from "./actions/counter";
 
 const store = configureStore({
     reducer: {
@@ -17,8 +24,15 @@ const store = configureStore({
 });
 
 function App() {
+    const counter = useSelector((state: any) => state.counter);
+    const dispatch = useDispatch();
     return (
         <div className="App">
+            <div>
+                <button onClick={() => dispatch(increment(5))}>Increment</button>
+                <button onClick={() => dispatch(decrement(5))}>Decrement</button>
+                <h1>Counter {counter}</h1>
+            </div>
             <Provider store={store}>
                 <Calculator/>
                 <DisplayValue/>
