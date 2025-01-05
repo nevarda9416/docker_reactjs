@@ -1,12 +1,28 @@
+// @ts-ignore
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import {Form, Button, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {configureStore} from "@reduxjs/toolkit";
+import calculatorReducer from './CalculatorSlice';
+import Calculator from "./Calculator";
+import DisplayValue from "./DisplayValue";
+import {Provider} from 'react-redux';
+
+const store = configureStore({
+    reducer: {
+        calculator: calculatorReducer,
+    }
+});
 
 function App() {
     return (
         <div className="App">
+            <Provider store={store}>
+                <Calculator/>
+                <DisplayValue/>
+            </Provider>
             <div className="container mt-4">
                 <h2 className="text-center mb-4">Registration Form</h2>
                 <Form>
