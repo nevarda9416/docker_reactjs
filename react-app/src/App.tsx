@@ -26,6 +26,52 @@ const store = configureStore({
 });
 
 function App() {
+    const people = [
+        "Creola Katherine Johnson: nhà toán học",
+        "Mario José Molina-Pasquel Henríquez: nhà hóa học",
+        "Mohammad Abdus Salam: nhà vật lý",
+        "Percy Lavon Julian: nhà hóa học",
+        "Subrahmanyan Chandrasekhar: nhà thiên văn học",
+    ];
+    const listItems = people.map((person) =>
+        <li>{person}</li>
+    );
+    // Array object
+    const author = [
+        {
+            id: 0,
+            name: "Creola Katherine Johnson",
+            professions: "nhà toán học",
+        },
+        {
+            id: 1,
+            name: "Mario José Molina-Pasquel Henríquez",
+            profession: "nhà hóa học",
+        },
+        {
+            id: 2,
+            name: "Mohammad Abdus Salam",
+            profession: "nhà vật lý",
+        },
+        {
+            id: 3,
+            name: "Percy Lavon Julian",
+            profession: "nhà hóa học",
+        },
+        {
+            id: 4,
+            name: "Subrahmanyan Chandrasekhar",
+            profession: "nhà thiên văn học",
+        },
+    ];
+    const chemists = author.filter((person) => person.profession === "nhà hóa học");
+    const listChemists = chemists.map((person) => (
+        <li>
+            <p>
+                <b>{person.name}:</b> {person.profession}
+            </p>
+        </li>
+    ));
     const counter = useSelector((state: any) => state.counter);
     const dispatch = useDispatch();
     const formik = useFormik({
@@ -56,6 +102,8 @@ function App() {
     });
     return (
         <div className="App">
+            <ul>{listItems}</ul>
+            <ul>{listChemists}</ul>
             <h1>Validation with Formik + Yup</h1>
             <form onSubmit={formik.handleSubmit}>
                 <div>
