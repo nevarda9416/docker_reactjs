@@ -1,7 +1,6 @@
-// @ts-ignore
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, {Component} from 'react';
 import {Form, Button, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {configureStore} from "@reduxjs/toolkit";
@@ -11,6 +10,8 @@ import DisplayValue from "./DisplayValue";
 import {Provider} from 'react-redux';
 import {useFormik} from "formik";
 import * as Yup from "yup";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Dashboard from './components/Dashboard'
 /**
  * Cùng test kết quả bằng cách hiện giá trị counter cùng 2 nút tăng giảm, mỗi lần ấn vào counter tăng/giảm 5 đơn vị, ta sẽ:
  * - Sử dụng useSelector của react-redux để lấy state counter từ store.
@@ -24,6 +25,18 @@ const store = configureStore({
         calculator: calculatorReducer,
     }
 });
+
+function Home() {
+    return <h1>Home Page</h1>;
+}
+
+function About() {
+    return <h1>About Page</h1>;
+}
+
+function Contact() {
+    return <h1>Contact Page</h1>;
+}
 
 function App() {
     const people = [
@@ -102,6 +115,14 @@ function App() {
     });
     return (
         <div className="App">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/dashboard" element={<Dashboard/>}/>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/about" element={<About/>}/>
+                    <Route path="/contact" element={<Contact/>}/>
+                </Routes>
+            </BrowserRouter>
             <ul>{listItems}</ul>
             <ul>{listChemists}</ul>
             <h1>Validation with Formik + Yup</h1>
