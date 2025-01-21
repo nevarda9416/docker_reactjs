@@ -10,7 +10,7 @@ import DisplayValue from "./DisplayValue";
 import {Provider} from 'react-redux';
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Router, Routes, Route} from "react-router-dom";
 import Dashboard from './components/Dashboard'
 /**
  * Cùng test kết quả bằng cách hiện giá trị counter cùng 2 nút tăng giảm, mỗi lần ấn vào counter tăng/giảm 5 đơn vị, ta sẽ:
@@ -19,6 +19,10 @@ import Dashboard from './components/Dashboard'
  */
 import {useSelector, useDispatch} from "react-redux";
 import {increment, decrement} from "./actions/counter";
+import Layout from "./Layout";
+import Category from "./components/Category";
+import Product from "./components/Product";
+import Post from "./components/Post";
 
 const store = configureStore({
     reducer: {
@@ -117,6 +121,11 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Routes>
+                    <Route path="/" element={<Layout/>}/>
+                        <Route path="category" element={<Category/>}/>
+                        <Route path="product" element={<Product/>}/>
+                        <Route path="post" element={<Post/>}>
+                    </Route>
                     <Route path="/dashboard" element={<Dashboard/>}/>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/about" element={<About/>}/>
