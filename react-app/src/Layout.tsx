@@ -16,6 +16,10 @@ function Layout() {
                 <Link to="/post">
                     Post
                 </Link>
+                |
+                <Link to="/advanced_form">
+                    Advanced Form
+                </Link>
             </nav>
             <hr/>
             <Outlet/>
