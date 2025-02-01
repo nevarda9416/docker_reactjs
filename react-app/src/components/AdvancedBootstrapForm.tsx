@@ -19,6 +19,82 @@ const AdvancedBootstrapForm = () => {
     }
     return (
         <Form>
+            {['checkbox', 'radio'].map((type) => (
+                <div key={type} className="mb-3">
+                    <Form.Check id={`check-api-${type}`}>
+                        <Form.Check.Input isValid/>
+                        <Form.Check.Label>{`Custom api ${type}`}</Form.Check.Label>
+                        <Form.Control.Feedback type="valid">
+                            You dit it!
+                        </Form.Control.Feedback>
+                    </Form.Check>
+                </div>
+            ))}
+            <Form.Check aria-label="option 1"/>
+            <Form.Check type="radio" aria-label="radio 1"/>
+            {['checkbox', 'radio'].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                    <Form.Check
+                        reverse
+                        name="group1"
+                        type="radio"
+                        id={`inline-${type}-1`}
+                        label="1"/>
+                    <Form.Check
+                        reverse
+                        name="group1"
+                        id={`inline-${type}-2`}
+                        label="2"/>
+                    <Form.Check
+                        reverse
+                        disabled
+                        id={`inline-${type}-3`}
+                        label="3 (disabled)"/>
+                </div>
+            ))}
+            {['checkbox', 'radio'].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                    <Form.Check
+                        inline
+                        name="group1"
+                        type="radio"
+                        id={`inline-${type}-1`}
+                        label="1"/>
+                    <Form.Check
+                        inline
+                        name="group1"
+                        id={`inline-${type}-2`}
+                        label="2"/>
+                    <Form.Check
+                        inline
+                        disabled
+                        id={`inline-${type}-3`}
+                        label="3 (disabled)"/>
+                </div>
+            ))}
+            <Form.Check
+                type="switch"
+                id="custom-switch"
+                label="Check this switch"
+            />
+            <Form.Check
+                disabled
+                type="switch"
+                id="disabled-custom-switch"
+                label="disabled switch"
+            />
+            {['checkbox', 'radio'].map((type) => (
+                <div key={`default-${type}`} className="mb-3">
+                    <Form.Check
+                        type="radio"
+                        id={`default-${type}`}
+                        label={`default ${type}`}/>
+                    <Form.Check
+                        disabled
+                        id={`disabled-default-${type}`}
+                        label={`disabled ${type}`}/>
+                </div>
+            ))}            
             <Form.Label htmlFor="exampleColorInput">Color picker</Form.Label>
             <Form.Control type="color" id="exampleColorInput"
                 defaultValue="#563d7c" title="Choose your color"/>
