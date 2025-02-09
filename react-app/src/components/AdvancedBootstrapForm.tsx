@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { Form, Button, Row, Col, Alert, InputGroup, DropdownButton, Dropdown, SplitButton } from 'react-bootstrap';
 
 const AdvancedBootstrapForm = () => {
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        const formData = new FormData(e.target),
+                formDataObj = Object.fromEntries(formData.entries())
+        console.log(formDataObj);
+    };
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -18,7 +24,8 @@ const AdvancedBootstrapForm = () => {
         setFormData({ ...formData, [name]: value });
     }
     return (
-        <Form>
+        <Form onSubmit={handleSubmit}>
+            <Button className="btn btn-primary btn-large centerButton" type="submit">Send</Button>
             <InputGroup className="mb-3">
                 <SplitButton
                     variant="outline-secondary"
@@ -30,10 +37,10 @@ const AdvancedBootstrapForm = () => {
                     <Dropdown.Divider />
                     <Dropdown.Item href="#">Separated link</Dropdown.Item>
                 </SplitButton>
-                <Form.Control aria-label="Text input with dropdown button" />
+                <Form.Control aria-label="Text input with dropdown button" name="splitLeftButton"/>
             </InputGroup>
             <InputGroup className="mb-3">
-                <Form.Control aria-label="Text input with dropdown button" />
+                <Form.Control aria-label="Text input with dropdown button" name="splitRightButton"/>
                 <SplitButton
                     variant="outline-secondary"
                     title="Action"
@@ -53,18 +60,8 @@ const AdvancedBootstrapForm = () => {
                     <Dropdown.Divider />
                     <Dropdown.Item href="#">Separated link</Dropdown.Item>
                 </DropdownButton>
-                <Form.Control aria-label="Text input with 2 dropdown buttons" />
+                <Form.Control aria-label="Text input with 2 dropdown buttons" name="dropDown2Buttons"/>
                 <DropdownButton variant="outline-secondary" title="Dropdown" id="input-group-dropdown-4">
-                    <Dropdown.Item href="#">Action</Dropdown.Item>
-                    <Dropdown.Item href="#">Another action</Dropdown.Item>
-                    <Dropdown.Item href="#">Something else here</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item href="#">Separated link</Dropdown.Item>
-                </DropdownButton>
-            </InputGroup>
-            <InputGroup className="mb-3">
-                <Form.Control aria-label="Text input with dropdown button" />
-                <DropdownButton variant="outline-secondary" title="Dropdown" id="input-group-dropdown-2">
                     <Dropdown.Item href="#">Action</Dropdown.Item>
                     <Dropdown.Item href="#">Another action</Dropdown.Item>
                     <Dropdown.Item href="#">Something else here</Dropdown.Item>
@@ -80,7 +77,17 @@ const AdvancedBootstrapForm = () => {
                     <Dropdown.Divider />
                     <Dropdown.Item href="#">Separated link</Dropdown.Item>
                 </DropdownButton>
-                <Form.Control aria-label="Text input with dropdown button" />
+                <Form.Control aria-label="Text input with dropdown button" name="dropDownLeftButton"/>
+            </InputGroup>
+            <InputGroup className="mb-3">
+                <Form.Control aria-label="Text input with dropdown button" name="dropDownRightButton"/>
+                <DropdownButton variant="outline-secondary" title="Dropdown" id="input-group-dropdown-2">
+                    <Dropdown.Item href="#">Action</Dropdown.Item>
+                    <Dropdown.Item href="#">Another action</Dropdown.Item>
+                    <Dropdown.Item href="#">Something else here</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item href="#">Separated link</Dropdown.Item>
+                </DropdownButton>
             </InputGroup>
             <InputGroup className="mb-3">
                 <Form.Control placeholder="Recipient's username" aria-label="Recipient's username with two button addons" />
