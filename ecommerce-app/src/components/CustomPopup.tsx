@@ -22,7 +22,7 @@ const CustomPopup: FC = () => {
         <div className="relative font-karla">
             <div
                 className="inline-block cursor-pointer hover:opacity-85 dark:text-white"
-                onClick={handleProp}
+                onClick={handlePopup}
                 data-test="username-popup"
             >
                 {username}

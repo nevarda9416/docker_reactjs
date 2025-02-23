@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 
 const ScrollToTopButton: React.FC = () => {
