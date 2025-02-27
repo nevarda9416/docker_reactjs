@@ -11,6 +11,7 @@ import LoginModal from "./components/LoginModal";
 import AllProducts from "./pages/AllProducts";
 import ScrollToTopButton from './components/ScrollToTopButton';
 import BannerPopup from "./components/BannerPopup";
+import AllCategories from "./pages/AllCategories";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<AllProducts />} />
+        <Route path="/categories" element={<AllCategories />} />
       </Routes>
       <Toaster position="bottom-center" reverseOrder={false} />
       <Footer />

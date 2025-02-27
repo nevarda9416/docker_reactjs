@@ -43,7 +43,7 @@ const NavBar: FC = () => {
                         <Link to="/products" className="text-xl font-bold" data-test="main-products">
                             Products
                         </Link>
-                        <Link to="/cateegories" className="text-xl font-bold" data-test="main-categories">
+                        <Link to="/categories" className="text-xl font-bold" data-test="main-categories">
                             Categories
                         </Link>
                         <div className="flex items-center gap-2">
