@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
 import LoginModal from "./components/LoginModal";
-import ProtectedRoute from './components/ProtectedRoute';
+import AllProducts from "./pages/AllProducts";
 import ScrollToTopButton from './components/ScrollToTopButton';
 import BannerPopup from "./components/BannerPopup";
 
@@ -17,10 +17,11 @@ function App() {
     <Provider store={store}>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<AllProducts />} />
       </Routes>
       <Toaster position="bottom-center" reverseOrder={false} />
-      <Footer/>
+      <Footer />
       <Cart />
       <LoginModal />
       <ScrollToTopButton />
