@@ -66,13 +66,13 @@ const reviews: ReviewItem[] = [
 ];
 const getShuffledArr = () => {
     const arr: ReviewItem[] = [];
-    const start = Math.floor(Math.randow() * 4);
+    const start = Math.floor(Math.random() * 4);
     for (let index = start; index < start + 5; index++) {
         arr.push(reviews[index]);
     }
     return arr;
 };
-const Reviews: FC = () => {
+const Reviews: FC<{id: number}> = ({id}) => {
     const [items, setItems] = useState<ReviewItem[]>([]);
     useEffect(() => {
         const _arr = getShuffledArr();
