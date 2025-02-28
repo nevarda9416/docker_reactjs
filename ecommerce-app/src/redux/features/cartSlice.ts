@@ -15,11 +15,11 @@ export const cartSlice = createSlice({
                 const item = { ...action.payload, quantity: 1 };
                 return { ...state, cartItems: [...cartItems, item] };
             } else {
-                const updatedItems = cartItems.map((item) => {
+                const updatedItems = cartItems.map((item) => 
                     item.id === action.payload.id
                         ? { ...item, quantity: item.quantity && item.quantity + 1 }
                         : item
-                });
+                );
                 return { ...state, cartItems: updatedItems };
             }
         },
