@@ -9,11 +9,13 @@ import Footer from "./components/Footer";
 import Cart from "./components/Cart";
 import SingleProduct from "./pages/SingleProduct";
 import LoginModal from "./components/LoginModal";
+import Wishlist from "./pages/Wishlist";
 import AllProducts from "./pages/AllProducts";
 import ScrollToTopButton from './components/ScrollToTopButton';
 import BannerPopup from "./components/BannerPopup";
 import AllCategories from "./pages/AllCategories";
 import SingleCateogory from "./pages/SingleCategory";
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -25,6 +27,9 @@ function App() {
         <Route path="/categories" element={<AllCategories />} />
         <Route path="/product/:productID" element={<SingleProduct />} />
         <Route path="/category/:slug" element={<SingleCateogory />} />
+        <Route path="/wishlist" element={<ProtectedRoute />}>
+          <Route path="/wishlist" element={<Wishlist />} />
+        </Route>
       </Routes>
       <Toaster position="bottom-center" reverseOrder={false} />
       <Footer />
