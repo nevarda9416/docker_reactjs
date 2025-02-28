@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
+import SingleProduct from "./pages/SingleProduct";
 import LoginModal from "./components/LoginModal";
 import AllProducts from "./pages/AllProducts";
 import ScrollToTopButton from './components/ScrollToTopButton';
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<AllProducts />} />
         <Route path="/categories" element={<AllCategories />} />
+        <Route path="/product/:productID" element={<SingleProduct />} />
         <Route path="/category/:slug" element={<SingleCateogory />} />
       </Routes>
       <Toaster position="bottom-center" reverseOrder={false} />
