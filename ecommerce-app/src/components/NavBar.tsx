@@ -78,7 +78,7 @@ const NavBar: FC = () => {
                             <AiOutlineShoppingCart className="dark:text-white" />
                             <div
                                 className="absolute top-[-15px] right-[-10px] bg-red-600 w-[25px] h-[25px] rounded-full text-white text-[14px] grid place-items-center"
-                                data-text="cart-item-count"
+                                data-test="cart-item-count"
                             >
                                 {cartCount}
                             </div>

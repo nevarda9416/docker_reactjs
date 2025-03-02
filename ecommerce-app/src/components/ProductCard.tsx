@@ -30,6 +30,7 @@ const ProductCard: FC<Product> = ({ id, price, thumbnail, title, category, ratin
             });
         });
     };
+    const classAddCartBtnName = `add-cart-btn-${id}`;
     return (
         <div className="border border-gray-200 font-lato" data-test="product-card">
             <div className="text-center border-b border-gray-200">
@@ -53,7 +54,7 @@ const ProductCard: FC<Product> = ({ id, price, thumbnail, title, category, ratin
                     <PriceSection discountPercentage={discountPercentage} price={price} />
                 )}
                 <button type="button" className="flex items-center space-x-2 hover:bg-blue-500 text-white py-2 px-4 rounded bg-pink-500"
-                    onClick={addCart} data-test="add-cart-btn" title="ADD TO CART">
+                    onClick={addCart} data-test={classAddCartBtnName} title="ADD TO CART">
                     <AiOutlineShoppingCart />
                 </button>
             </div>

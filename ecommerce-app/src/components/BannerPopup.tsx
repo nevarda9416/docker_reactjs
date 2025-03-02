@@ -15,6 +15,7 @@ const BannerPopup: FC = () => {
                         dispatch(updateBanner(false));
                     }}
                     className="absolute top-0 right-0 m-2 bg-white rounded-full p-2"
+                    data-test="close-popup-btn"
                 >
                     ✖
                 </button>
