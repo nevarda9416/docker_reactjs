@@ -13,7 +13,7 @@ describe("testing the products page", () => {
             expect(interception.response.body).not.to.be.empty;
         });
     });
-    it.only("products are sorted", () => {
+    it("products are sorted", () => {
         cy.wait("@products").then(() => {
             cy.get("select").select("desc");
             cy.get("select").select("default");

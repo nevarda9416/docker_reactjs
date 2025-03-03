@@ -23,7 +23,7 @@ describe("testing the cart functionalities", () => {
         cy.contains(/your cart is empty/i).should("be.visible");
         cy.get('[data-test="cart-close"]').click();
     });
-    it.only("checkout and order confirm works", () => {
+    it("checkout and order confirm works", () => {
         cy.get('[data-test="add-cart-btn-12"]').first().click();
         cy.get('[data-test="cart-btn"]').click();
         cy.get('[data-test="cart-increase-btn"]').click();
