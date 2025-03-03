@@ -4,8 +4,8 @@ describe("testing the cart functionalities", () => {
         cy.get('[data-test="close-popup-btn"]').click();
         cy.get('[data-test="login-btn"]').click();
         cy.get('[data-test="login-container"]').should("be.visible");
-        cy.get('[data-test="input-username"]').type("atuny0");
-        cy.get('[data-test="input-password"]').type("9uQFF1Lh");
+        cy.get('[data-test="input-username"]').type(Cypress.env('username'));
+        cy.get('[data-test="input-password"]').type(Cypress.env('password'));
         cy.get('[data-test="input-submit"]').click();
     });
     it("cart opens and close", () => {
