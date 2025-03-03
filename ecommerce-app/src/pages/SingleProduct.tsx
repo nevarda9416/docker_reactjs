@@ -168,6 +168,7 @@ const SingleProduct: FC = () => {
                             className="flex space-x-1 items-center mr-2 mb-2 bg-blue-500 text-white py-2 px-4 rounded hover bg-blue-700"
                             onClick={buyNow}
                             title="BUY NOW"
+                            data-test="buy-now-btn"
                         >
                             <FaHandHoldingDollar />
                         </button>
@@ -176,6 +177,7 @@ const SingleProduct: FC = () => {
                             className="flex space-x-1 items-center mb-2 bg-yellow-500 text-white py-2 px-4 rounded hover bg-yellow-700"
                             onClick={addWishlist}
                             title="ADD TO WISHLIST"
+                            data-test="add-to-wishlist-btn"
                         >
                             <MdFavoriteBorder />
                         </button>
