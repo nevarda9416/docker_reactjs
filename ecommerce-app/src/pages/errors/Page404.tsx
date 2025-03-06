@@ -1,16 +1,16 @@
 import {useNavigate} from "react-router-dom";
 import "../../assets/Page500.scss";
 
-const Page500 = () => {
+const Page404 = () => {
     const navigate = useNavigate();
     const handleBack = () => {
         navigate("/");
     };
     return (
         <div className="section">
-            <h1 className="error">500</h1>
+            <h1 className="error">404</h1>
             <div className="page">
-                Oh snap!!! You don't have permission to access this route.
+                Oh snap!!! The page you are looking for is not found.
             </div>
             <div>
                 <a className="button" onClick={handleBack}>
@@ -20,4 +20,4 @@ const Page500 = () => {
         </div>
     );
 };
-export default Page500;
+export default Page404;

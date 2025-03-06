@@ -6,6 +6,7 @@ import SingleProduct from "../pages/SingleProduct";
 import SingleCategory from "../pages/SingleCategory";
 import Wishlist from "../pages/Wishlist";
 import Profile from "../pages/Profile";
+import Page404 from "../pages/errors/Page404";
 import ProtectedRoute from './ProtectedRoute.tsx';
 import {UserContext} from "../context/UserContext.tsx";
 import {useContext} from "react";
@@ -26,6 +27,7 @@ const AppRoutes = () => {
                 <Route path="/account" element={<ProtectedRoute/>}>
                     <Route path="/account" element={<Profile/>}/>
                 </Route>
+                <Route path="*" element={<Page404/>}/>
             </Routes>
         </>
     );
