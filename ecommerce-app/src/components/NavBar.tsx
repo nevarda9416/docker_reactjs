@@ -7,7 +7,7 @@ import { updateModal } from "../redux/features/authSlice";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { FaUser } from "react-icons/fa";
-import CustomPopup from "./CustomPopup";
+import Custom from "./popup/Custom";
 import { updateDarkMode } from "../redux/features/homeSlice";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
@@ -58,7 +58,7 @@ const NavBar: FC = () => {
                             )}
                             <div className="text-gray-500 text-2xl">
                                 {username !== "" ? (
-                                    <CustomPopup />
+                                    <Custom />
                                 ) : (
                                     <span 
                                         className="cursor-pointer hover:opacity-85 dark:text-white"

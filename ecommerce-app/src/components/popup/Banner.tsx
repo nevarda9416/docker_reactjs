@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { updateBanner } from "../redux/features/homeSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { updateBanner } from "../../redux/features/homeSlice";
 
 const BannerPopup: FC = () => {
     const show = useAppSelector((state) => state.homeReducer.isBannerVisible);

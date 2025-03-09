@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useAppSelector } from "../redux/hooks";
-import ProductList from "../components/ProductList";
+import ProductList from "../components/products/ProductList";
 
 const Wishlist: FC = () => {
     const wishlist = useAppSelector((state) => state.productReducer.wishlist);

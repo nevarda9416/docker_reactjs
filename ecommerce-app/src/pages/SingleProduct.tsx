@@ -4,11 +4,11 @@ import { useAppDispatch } from "../redux/hooks";
 import { addToCart, setCartState } from "../redux/features/cartSlice";
 import { Product } from "../models/Product";
 import RatingStar from "../components/RatingStar";
-import PriceSection from "../components/PriceSection";
+import Price from "../components/section/Price";
 import toast from "react-hot-toast";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaHandHoldingDollar } from "react-icons/fa6";
-import ProductList from "../components/ProductList";
+import ProductList from "../components/products/ProductList";
 import Reviews from "../components/Reviews";
 import useAuth from "../hooks/useAuth";
 import { MdFavoriteBorder } from "react-icons/md";
@@ -126,7 +126,7 @@ const SingleProduct: FC = () => {
                     {product?.rating && <RatingStar rating={product?.rating} />}
                     <div className="mt-1">
                         {product?.discountPercentage && (
-                            <PriceSection
+                            <Price
                                 discountPercentage={product?.discountPercentage}
                                 price={product?.price}
                             />

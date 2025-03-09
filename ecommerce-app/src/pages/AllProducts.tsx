@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { addProducts } from "../redux/features/productSlice";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/products/ProductCard";
 import { Product } from "../models/Product";
 
 const AllProducts: FC = () => {

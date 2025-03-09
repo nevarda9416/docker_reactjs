@@ -1,11 +1,11 @@
 import { FC, useEffect } from "react";
-import HeroSection from "../components/HeroSection";
-import Features from "../components/Features";
-import TrendingProducts from "../components/TrendingProducts";
+import Hero from "../components/section/Hero";
+import Features from "../components/cart/Features";
+import TrendingProducts from "../components/products/TrendingProducts";
 import { useAppDispatch } from "../redux/hooks";
 import { updateNewList, updateFeaturedList } from "../redux/features/productSlice";
 import { Product } from "../models/Product";
-import LatestProducts from "../components/LatestProducts";
+import LatestProducts from "../components/products/LatestProducts";
 import Banner from "../components/Banner";
 
 const Home: FC = () => {
@@ -37,7 +37,7 @@ const Home: FC = () => {
     }, [dispatch]);
     return (
         <div className="dark:bg-slate-800">
-            <HeroSection />
+            <Hero />
             <Features />
             <TrendingProducts />
             <Banner />

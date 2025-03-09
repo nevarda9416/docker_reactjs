@@ -1,6 +1,6 @@
 import { FC, FormEvent, useState } from "react";
-import { useAppSelector, useAppDispatch } from "../redux/hooks";
-import { doLogin, updateModal } from "../redux/features/authSlice";
+import { useAppSelector, useAppDispatch } from "../../redux/hooks";
+import { doLogin, updateModal } from "../../redux/features/authSlice";
 import { FaUnlock } from "react-icons/fa";
 import { RiLockPasswordFill, RiUser3Fill } from "react-icons/ri";
 import { GiArchiveRegister } from "react-icons/gi";

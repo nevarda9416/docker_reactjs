@@ -1,13 +1,13 @@
 import { FC } from "react";
-import { Product } from "../models/Product";
-import RatingStar from "./RatingStar";
-import { addToCart } from "../redux/features/cartSlice";
-import { useAppDispatch } from "../redux/hooks";
+import { Product } from "../../models/Product";
+import RatingStar from "../RatingStar";
+import { addToCart } from "../../redux/features/cartSlice";
+import { useAppDispatch } from "../../redux/hooks";
 import toast from "react-hot-toast";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import PriceSection from "./PriceSection";
-import useAuth from "../hooks/useAuth";
+import Price from "../section/Price";
+import useAuth from "../../hooks/useAuth";
 
 const ProductCard: FC<Product> = ({ id, price, thumbnail, title, category, rating, discountPercentage }) => {
     const dispatch = useAppDispatch();
@@ -51,7 +51,7 @@ const ProductCard: FC<Product> = ({ id, price, thumbnail, title, category, ratin
             </div>
             <div className="flex flex-wrap items-center justify-between px-4 pb-4">
                 {discountPercentage && (
-                    <PriceSection discountPercentage={discountPercentage} price={price} />
+                    <Price discountPercentage={discountPercentage} price={price} />
                 )}
                 <button type="button" className="flex items-center space-x-2 hover:bg-blue-500 text-white py-2 px-4 rounded bg-pink-500"
                     onClick={addCart} data-test={classAddCartBtnName} title="ADD TO CART">

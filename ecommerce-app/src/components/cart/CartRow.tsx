@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { CartItem } from "../models/CartItem";
+import { CartItem } from "../../models/CartItem";
 import { IoIosAddCircleOutline, IoIosRemoveCircleOutline } from "react-icons/io";
-import { useAppDispatch } from "../redux/hooks";
-import { addToCart, reduceFromCart, removeFromCart } from "../redux/features/cartSlice";
+import { useAppDispatch } from "../../redux/hooks";
+import { addToCart, reduceFromCart, removeFromCart } from "../../redux/features/cartSlice";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import useDiscount from "../hooks/useDiscount";
+import useDiscount from "../../hooks/useDiscount";
 
 const CartRow: FC<CartItem> = ({
     id,

@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { MdFavoriteBorder, MdOutlineAccountCircle, MdOutlineLogout } from "react-icons/md";
-import { doLogout } from "../redux/features/authSlice";
+import { doLogout } from "../../redux/features/authSlice";
 import { Link } from "react-router-dom";
 
 const CustomPopup: FC = () => {
