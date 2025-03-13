@@ -3,6 +3,7 @@ import React from "react";
 const UserContext = React.createContext({email: "", auth: false});
 // @function UserProvider
 // Create function to provide UserContext
+// @ts-ignore
 const UserProvider = ({children}) => {
     const [user, setUser] = React.useState({email: "", auth: false});
     const loginContext = (email: string, token: string) => {

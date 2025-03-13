@@ -8,7 +8,7 @@ const createNewUser = (name: string, job: string) => {
 const updateUser = (name: string, job: string, id: number) => {
     return axios.put(`users/${id}`, {name, job, id});
 };
-const deleteUser = (id: number) => {
+const deleteUser = (id: string) => {
     return axios.delete(`/users/${id}`, {id});
 };
 const loginAPI = (email: string, password: string) => {

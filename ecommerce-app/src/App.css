@@ -5,6 +5,15 @@
   text-align: center;
 }
 
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +48,82 @@
 
 .read-the-docs {
   color: #888;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.app-container {
+  .title {
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    color: cornflowerblue;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .btn-import {
+    height: 38px;
+  }
+  .home {
+    margin: 0 30px 0 50px;
+    .request {
+      font-weight: 500;
+      font-size: 20px;
+    }
+  }
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    .login-form {
+      width: 50%;
+      max-width: 400px;
+      min-width: 300px;
+      .input-password {
+        position: relative;
+        .fa-eye-slash,
+        .fa-eye {
+          position: absolute;
+          top: 30%;
+          left: 90%;
+        }
+      }
+      .btn-login {
+        width: 100%;
+        background-color: #e0d3d3;
+        color: #b3a8a8;
+        font-weight: 500;
+        &.active {
+          background-color: #d73939;
+          color: #e2dbdb;
+        }
+      }
+      button[disabled="disabled"],
+      button:disabled {
+        cursor: pointer;
+      }
+      .back-home {
+        text-align: center;
+        .back-text {
+          font-weight: 600;
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+.paginate {
+  display: flex;
+  justify-content: center;
 }

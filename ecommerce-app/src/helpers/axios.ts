@@ -1,6 +1,6 @@
 import axios from 'axios';
 const instance = axios.create({
-    baseURL: process.env.BASE_URL
+    baseURL: "https://reqres.in/api"
 });
 // Add a reponse interceptor
 instance.interceptors.response.use(

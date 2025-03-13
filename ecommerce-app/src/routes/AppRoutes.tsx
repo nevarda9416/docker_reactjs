@@ -9,11 +9,8 @@ import Profile from "../pages/Profile";
 import UserList from "../pages/admin/UserList.tsx";
 import Page404 from "../pages/errors/Page404";
 import ProtectedRoute from './ProtectedRoute.tsx';
-import {UserContext} from "../context/UserContext.tsx";
-import {useContext} from "react";
 
 const AppRoutes = () => {
-    const {user} = useContext(UserContext);
     return (
         <>
             <Routes>
