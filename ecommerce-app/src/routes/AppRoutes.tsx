@@ -9,6 +9,7 @@ import Profile from "../pages/Profile";
 import UserList from "../pages/admin/UserList.tsx";
 import Page404 from "../pages/errors/Page404";
 import ProtectedRoute from './ProtectedRoute.tsx';
+import MultiFileUpload from "../pages/admin/MultiFileUpload.tsx";
 
 const AppRoutes = () => {
     return (
@@ -27,6 +28,9 @@ const AppRoutes = () => {
                 </Route>
                 <Route path="/admin/users" element={<ProtectedRoute/>}>
                     <Route path="/admin/users" element={<UserList/>}/>
+                </Route>
+                <Route path="/admin/upload" element={<ProtectedRoute/>}>
+                    <Route path="/admin/upload" element={<MultiFileUpload/>}/>
                 </Route>
                 <Route path="*" element={<Page404/>}/>
             </Routes>
