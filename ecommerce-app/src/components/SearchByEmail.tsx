@@ -1,8 +1,8 @@
-import memo from "react";
+import React from "react";
 import _ from "lodash";
 import {debounce} from "lodash";
 
-const SearchByEmail = memo((props: { getAllUsers: any; listUsers: any; setListUser: any; }) => {
+const SearchByEmail = React.memo((props: { getAllUsers: any; listUsers: any; setListUser: any; }) => {
     const {getAllUsers, listUsers, setListUser} = props;
     const handleSearch = debounce((event: any) => {
         let term = event;
