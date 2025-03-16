@@ -65,7 +65,7 @@ const UserList = () => {
     };
     return (
         <div>
-            <div className="mt-5 pt-3 title">Manage users</div>
+            <h3 className="mt-5 pt-3 title">Manage users</h3>
             <div className="d-flex gap-3">
                 <AddNewUser handleUpdateTable={handleUpdateTable}/>
                 <ImportCSV setListUser={setListUser}/>

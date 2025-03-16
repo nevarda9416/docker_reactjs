@@ -1,7 +1,8 @@
+import memo from "react";
 import _ from "lodash";
 import {debounce} from "lodash";
 
-const SearchByEmail = (props: { getAllUsers: any; listUsers: any; setListUser: any; }) => {
+const SearchByEmail = memo((props: { getAllUsers: any; listUsers: any; setListUser: any; }) => {
     const {getAllUsers, listUsers, setListUser} = props;
     const handleSearch = debounce((event: any) => {
         let term = event;
@@ -9,7 +10,7 @@ const SearchByEmail = (props: { getAllUsers: any; listUsers: any; setListUser: a
             let listUsersCopy = _.cloneDeep(listUsers);
             listUsersCopy = listUsersCopy.filter((item: {
                 email: { include: (arg0: any) => any; };
-            }) => item.email.include(term));
+            }) => item.email.includes(term));
             setListUser(listUsersCopy);
         } else {
             getAllUsers(1);
@@ -28,5 +29,5 @@ const SearchByEmail = (props: { getAllUsers: any; listUsers: any; setListUser: a
             </div>
         </div>
     );
-};
+});
 export default SearchByEmail;
