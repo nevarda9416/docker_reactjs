@@ -1,5 +1,5 @@
 import './App.css';
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {Form, Button, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {configureStore} from "@reduxjs/toolkit";
@@ -11,6 +11,7 @@ import {useFormik} from "formik";
 import * as Yup from "yup";
 import {BrowserRouter, Router, Routes, Route} from "react-router-dom";
 import Dashboard from './components/Dashboard'
+import ChildrenComponent from "./components/ChildrenComponent";
 /**
  * Cùng test kết quả bằng cách hiện giá trị counter cùng 2 nút tăng giảm, mỗi lần ấn vào counter tăng/giảm 5 đơn vị, ta sẽ:
  * - Sử dụng useSelector của react-redux để lấy state counter từ store.
@@ -117,6 +118,10 @@ function App() {
             alert(JSON.stringify(values, null, 2));
         },
     });
+    const [value, setValue] = useState("");
+    const handleChange = (newValue: React.SetStateAction<string>) => {
+        setValue(newValue);
+    };
     return (
         <div className="App">
             <BrowserRouter>
@@ -135,6 +140,8 @@ function App() {
             </BrowserRouter>
             <ul>{listItems}</ul>
             <ul>{listChemists}</ul>
+            <ChildrenComponent value={value} onChange={handleChange} />
+            <p>Input value: {value}</p>
             <h1>Validation with Formik + Yup</h1>
             <form onSubmit={formik.handleSubmit}>
                 <div>
