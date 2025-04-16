@@ -12,6 +12,7 @@ import {
     SplitButton,
     FloatingLabel
 } from 'react-bootstrap';
+import axios from 'axios';
 
 const AdvancedBootstrapForm = () => {
     const handleSubmit = (e: any) => {
@@ -58,9 +59,30 @@ const AdvancedBootstrapForm = () => {
     const rejectStyle = {
         borderColor: '#ff1744',
     };
+    const [uploading, setUploading] = useState(false);
     const [myFiles, setMyFiles] = useState<File[]>([]);
-    const onDrop = useCallback((acceptedFiles: File[]) => {
+    const onDrop = useCallback(async (acceptedFiles: File[]) => {
+        setUploading(true);
+        for (const file of acceptedFiles) {
+            try {
+                // 1. Get presigned URL form your backend
+                const { data } = await axios.post('/api/s3-presign', {
+                    filename: file.name,
+                    filetype: file.type,
+                });
+                const { uploadUrl, fileUrl } = data;
+                // 2. Upload to S3
+                await axios.put(uploadUrl, file, {
+                    headers: {
+                        'Content-Type': file.type
+                    },
+                });
+            } catch (err) {
+                console.log('Error uploading file: ', file.name, err);
+            }
+        }
         setMyFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
+        setUploading(false);
     }, []);
     const removeFile = (fileName: string) => {
         setMyFiles((prevFiles) => prevFiles.filter((file) => file.name !== fileName));
@@ -124,6 +146,7 @@ const AdvancedBootstrapForm = () => {
             </div>
             <aside>
                 <h6>Accepted files</h6>
+                {uploading && <p>Uploading files...</p>}
                 <ul>{acceptedFileItems}</ul>
                 {acceptedFileItems.length > 0 && <button onClick={removeAll}>Remove All</button>}
                 <h6>Rejected files</h6>
