@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { useDropzone } from 'react-dropzone'
+import { useDropzone } from 'react-dropzone';
 import {
     Form,
     Button,
@@ -10,17 +10,11 @@ import {
     DropdownButton,
     Dropdown,
     SplitButton,
-    FloatingLabel
+    FloatingLabel,
 } from 'react-bootstrap';
 import axios from 'axios';
 
 const AdvancedBootstrapForm = () => {
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
-        const formData = new FormData(e.target),
-            formDataObj = Object.fromEntries(formData.entries())
-        console.log(formDataObj);
-    };
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -30,12 +24,39 @@ const AdvancedBootstrapForm = () => {
         hobbies: [],
         additionalInfo: '',
     });
-    const [errors, setErrors] = useState({});
-    const [submitted, setSubmitted] = useState(false);
-    const handleChange = (e: { target: { name: any; value: any; type: any; checked: any; }; }) => {
-        const { name, value, type, checked } = e.target;
-        setFormData({ ...formData, [name]: value });
-    }
+    const [uploading, setUploading] = useState(false);
+    const [myFiles, setMyFiles] = useState<{ file: File; uploadUrl?: string; fileUrl?: string }[]>([]);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setUploading(true);
+        try {
+            for (const f of myFiles) {
+                const { file, uploadUrl } = f;
+                console.log('Uploading file:', file.name, 'to URL:', uploadUrl);
+                if (!uploadUrl) {
+                    console.error('Missing upload URL for file:', file.name);
+                    continue;
+                }
+                // Step 2: Upload file to S3 using the pre-signed URL
+                await axios.put(uploadUrl, file, {
+                    headers: {
+                        'Content-Type': file.type,
+                    },
+                });
+                console.log(`Uploaded: ${file.name}`);
+            }
+
+            const formData = new FormData(e.target as HTMLFormElement);
+            const formDataObj = Object.fromEntries(formData.entries());
+            console.log('Form Data:', formDataObj);
+        } catch (err) {
+            console.error('Upload error:', err);
+        } finally {
+            setUploading(false);
+        }
+    };
+
     const baseStyle = {
         flex: 1,
         display: 'flex',
@@ -50,63 +71,53 @@ const AdvancedBootstrapForm = () => {
         outline: 'none',
         transition: 'border .24s ease-in-out',
     };
-    const focusedStyle = {
-        borderColor: '#2196F3',
-    };
-    const acceptStyle = {
-        borderColor: '#00e676',
-    };
-    const rejectStyle = {
-        borderColor: '#ff1744',
-    };
-    const [uploading, setUploading] = useState(false);
-    const [myFiles, setMyFiles] = useState<File[]>([]);
+    const focusedStyle = { borderColor: '#2196F3' };
+    const acceptStyle = { borderColor: '#00e676' };
+    const rejectStyle = { borderColor: '#ff1744' };
+
     const onDrop = useCallback(async (acceptedFiles: File[]) => {
-        setUploading(true);
+        const newFiles = [];
         for (const file of acceptedFiles) {
             try {
-                // 1. Get presigned URL form your backend
+                // Step 1: Get pre-signed URL from backend
                 const { data } = await axios.post('/api/s3-presign', {
                     filename: file.name,
                     filetype: file.type,
                 });
                 const { uploadUrl, fileUrl } = data;
-                // 2. Upload to S3
-                await axios.put(uploadUrl, file, {
-                    headers: {
-                        'Content-Type': file.type
-                    },
-                });
+                newFiles.push({ file, uploadUrl, fileUrl });
             } catch (err) {
-                console.log('Error uploading file: ', file.name, err);
+                newFiles.push({ file });
+                console.error('Error uploading file:', file.name, err);
             }
         }
-        setMyFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
-        setUploading(false);
+        setMyFiles(newFiles);
     }, []);
     const removeFile = (fileName: string) => {
-        setMyFiles((prevFiles) => prevFiles.filter((file) => file.name !== fileName));
+        setMyFiles((prevFiles) => prevFiles.filter((file) => file.file.name !== fileName));
     };
     const removeAll = () => {
         setMyFiles([]);
     };
-    const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject, open, acceptedFiles, fileRejections } = useDropzone({
+
+    const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject, open, fileRejections } = useDropzone({
         accept: { 'image/*': [] },
         noClick: true,
         noKeyboard: true,
         onDrop,
     });
-    const style = useMemo(() => ({
-        ...baseStyle,
-        ...(isFocused ? focusedStyle : {}),
-        ...(isDragAccept ? acceptStyle : {}),
-        ...(isDragReject ? rejectStyle : {}),
-    }), [
-        isFocused,
-        isDragAccept,
-        isDragReject,
-    ]);
-    const acceptedFileItems = myFiles.map((file) => (
+
+    const style = useMemo(
+        () => ({
+            ...baseStyle,
+            ...(isFocused ? focusedStyle : {}),
+            ...(isDragAccept ? acceptStyle : {}),
+            ...(isDragReject ? rejectStyle : {}),
+        }),
+        [isFocused, isDragAccept, isDragReject]
+    );
+
+    const acceptedFileItems = myFiles.map(({ file }) => (
         <li key={file.name}>
             {file.name} - {file.size} bytes
             <button
@@ -124,6 +135,7 @@ const AdvancedBootstrapForm = () => {
             </button>
         </li>
     ));
+
     const fileRejectionItems = fileRejections.map(({ file, errors }) => (
         <li key={file.path}>
             {file.path} - {file.size} bytes
@@ -134,9 +146,12 @@ const AdvancedBootstrapForm = () => {
             </ul>
         </li>
     ));
+
     return (
         <Form onSubmit={handleSubmit}>
-            <Button className="btn btn-primary btn-large centerButton" type="submit">Send</Button>
+            <Button className="btn btn-primary btn-large centerButton" type="submit">
+                Send
+            </Button>
             <div {...getRootProps({ style })}>
                 <input {...getInputProps()} />
                 <p>Drag 'n' drop some files here, or click to select files</p>
@@ -500,6 +515,7 @@ const AdvancedBootstrapForm = () => {
                 <Form.Control as='textarea' rows={3} />
             </Form.Group>
         </Form>
-    )
-}
+    );
+};
+
 export default AdvancedBootstrapForm;
