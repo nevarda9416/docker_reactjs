@@ -24,6 +24,7 @@ import Category from "./components/Category";
 import Product from "./components/Product";
 import Post from "./components/Post";
 import AdvancedBootstrapForm from "./components/AdvancedBootstrapForm";
+import Gold from "./pages/Gold";
 
 const store = configureStore({
     reducer: {
@@ -136,6 +137,7 @@ function App() {
                     <Route path="/about" element={<About/>}/>
                     <Route path="/contact" element={<Contact/>}/>
                     <Route path="/advanced_form" element={<AdvancedBootstrapForm/>}/>
+                    <Route path="/gold" element={<Gold/>}/>
                 </Routes>
             </BrowserRouter>
             <ul>{listItems}</ul>
