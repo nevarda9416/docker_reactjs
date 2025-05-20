@@ -1,0 +1,27 @@
+[
+  {
+    "date": "2025-05-16",
+    "list_price": 11400000,
+    "market_price_forecast": 10550000
+  },
+  {
+    "date": "2025-05-17",
+    "list_price": 11400000,
+    "market_price_forecast": 10550000
+  },
+  {
+    "date": "2025-05-18",
+    "list_price": 11400000,
+    "market_price_forecast": 10550000
+  },
+  {
+    "date": "2025-05-19",
+    "list_price": 11420000,
+    "market_price_forecast": 10568509
+  },
+  {
+    "date": "2025-05-20",
+    "list_price": 11150000,
+    "market_price_forecast": 10318640
+  }
+]
