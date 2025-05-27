@@ -23,5 +23,40 @@
     "date": "2025-05-20",
     "list_price": 11150000,
     "market_price_forecast": 10318640
+  },
+  {
+    "date": "2025-05-21",
+    "list_price": 11450000,
+    "market_price_forecast": 10596272
+  },
+  {
+    "date": "2025-05-22",
+    "list_price": 11300000,
+    "market_price_forecast": 10457456
+  },
+  {
+    "date": "2025-05-23",
+    "list_price": 11250000,
+    "market_price_forecast": 10411184
+  },
+  {
+    "date": "2025-05-24",
+    "list_price": 11350000,
+    "market_price_forecast": 10780000
+  },
+  {
+    "date": "2025-05-25",
+    "list_price": 11350000,
+    "market_price_forecast": 10780000
+  },
+  {
+    "date": "2025-05-26",
+    "list_price": 11200000,
+    "market_price_forecast": 10750000
+  },
+  {
+    "date": "2025-05-27",
+    "list_price": 11380000,
+    "market_price_forecast": 10670000
   }
 ]
